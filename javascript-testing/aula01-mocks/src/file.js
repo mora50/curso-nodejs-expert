@@ -1,10 +1,10 @@
 const { readFile } = require("fs/promises");
-const { join } = require("path");
 const { error } = require("./constants");
+const User = require("./user");
 
 const DEFAULT_OPTION = {
   maxLines: 3,
-  fields: ["id", "name", "profession", "age"],
+  fields: ["id", "name", "stack", "profession", "age"],
 };
 
 class File {
@@ -13,7 +13,10 @@ class File {
     const validation = File.isValid(content);
 
     if (!validation.valid) throw new Error(validation.error);
-    return content;
+
+    const users = File.parseCSVToJson(content);
+
+    return users;
   }
   static async getFileContent(filePath) {
     return (await readFile(filePath)).toString("utf8");
@@ -21,6 +24,7 @@ class File {
 
   static isValid(csvString, options = DEFAULT_OPTION) {
     const [header, ...filesWithoutHeader] = csvString.split("\n");
+
     const isHeaderValid = header === options.fields.join(",");
 
     if (!isHeaderValid) {
@@ -42,6 +46,28 @@ class File {
     }
 
     return { valid: true };
+  }
+
+  static parseCSVToJson(csvString) {
+    const lines = csvString.split("\n");
+
+    const firstLine = lines.shift();
+
+    const header = firstLine.split(",");
+
+    const users = lines.map((line) => {
+      const columns = line.split(",");
+
+      let user = {};
+
+      for (const index in columns) {
+        user[header[index]] = columns[index];
+      }
+
+      return new User(user);
+    });
+
+    return users;
   }
 }
 
