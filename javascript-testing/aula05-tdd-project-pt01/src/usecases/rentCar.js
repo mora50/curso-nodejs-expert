@@ -25,13 +25,15 @@ class RentCarUseCase {
   async execute(days, customerId, carCartegoryId) {
     const customers = await customersRepository();
 
-    const customer = new Customer(
-      customers.find((customer) => customer.id === customerId)
+    const hasCustomer = customers.find(
+      (customer) => customer.id === customerId
     );
 
-    if (!customer) {
+    if (!hasCustomer) {
       throw Error("This customer does't exists!");
     }
+
+    const customer = new Customer(hasCustomer);
 
     const carCategories = await carCategoriesRepository();
 

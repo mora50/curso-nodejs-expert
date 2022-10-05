@@ -16,4 +16,32 @@ describe("Use case - Rent a car", () => {
 
     assert.equal(result.toString(), expected);
   });
+
+  it("Should calculate the fee based on age minor than 50", async () => {
+    const sut = new RentCarUseCase();
+
+    const customerId = "ea87a39a-234d-458e-981a-a65429e1ab28";
+
+    const categoryId = "407c02c9-750f-42ac-8618-61b087790cc8";
+
+    const result = await sut.execute(5, customerId, categoryId);
+
+    const expected = "R$ 188,00".replace(/\s/, String.fromCharCode(160));
+
+    assert.equal(result.toString(), expected);
+  });
+
+  it("Should throw error if customer not exists", async () => {
+    const sut = new RentCarUseCase();
+
+    const customerId = "ea87a39a-234d-458e-981a";
+
+    const categoryId = "407c02c9-750f-42ac-8618-61b087790cc8";
+
+    const result = async () => sut.execute(5, customerId, categoryId);
+
+    await assert.rejects(result, {
+      message: "This customer does't exists!",
+    });
+  });
 });
