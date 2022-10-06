@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1bab2c6c-1cbf-49db-bda9-157ddc762bf8",
+    "name": "Smart El Camino",
+    "releaseYear": 2021,
+    "available": false,
+    "gasAvailable": false
+  },
+  {
+    "id": "f7075670-2ae7-4ffc-b7f8-62d55b5c5fde",
+    "name": "Maserati Focus",
+    "releaseYear": 2022,
+    "available": true,
+    "gasAvailable": true
+  },
+  {
+    "id": "f3a07672-2c49-4085-825c-887417c06977",
+    "name": "Toyota Ranchero",
+    "releaseYear": 2021,
+    "available": false,
+    "gasAvailable": true
+  },
+  {
+    "id": "216c9ca0-f87b-4856-b43a-1424327ff1ed",
+    "name": "Kia Countach",
+    "releaseYear": 2022,
+    "available": true,
+    "gasAvailable": true
+  }
+]
