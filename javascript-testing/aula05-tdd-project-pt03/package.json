@@ -1,0 +1,21 @@
+{
+  "name": "aula05-tdd-project-pt01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "seed": "node ./seed",
+    "test": "npx mocha -w --parallel tests/**/*.test.js",
+    "test:cov": "npx nyc npx mocha --parallel tests/**/*.test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
+    "chai": "^4.3.6",
+    "mocha": "^8.4.0",
+    "sinon": "^9.2.4",
+    "supertest": "^6.2.4"
+  }
+}
