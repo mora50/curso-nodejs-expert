@@ -45,7 +45,7 @@ describe("Use case - Rent a car", () => {
   });
 
   it("Should calculate the fee based on age major than 30", async () => {
-    const customer = mocks.validCustomer[0];
+    const customer = mocks.validCustomer;
 
     const carCategory = mocks.validCarCategory;
     sandbox
@@ -66,7 +66,9 @@ describe("Use case - Rent a car", () => {
   });
 
   it("Should calculate the fee based on age between 18 and 25 ", async () => {
-    const customer = mocks.validCustomer[1];
+    const customer = Object.create(mocks.validCustomer);
+
+    customer.age = 24;
 
     const carCategory = mocks.validCarCategory;
     sandbox
@@ -87,7 +89,9 @@ describe("Use case - Rent a car", () => {
   });
 
   it("Should calculate the fee based on age between 26 and 30 ", async () => {
-    const customer = mocks.validCustomer[2];
+    const customer = Object.create(mocks.validCustomer);
+
+    customer.age = 28;
 
     const carCategory = mocks.validCarCategory;
     sandbox
