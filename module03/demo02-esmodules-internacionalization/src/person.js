@@ -38,6 +38,22 @@ class Person {
       }).format(mapDate(this.to)),
     };
   }
+
+  static generateInstanceFromString(text) {
+    const EMPTY_SPACE = " ";
+
+    const [id, vehicles, kmTraveled, from, to] = text.split(EMPTY_SPACE);
+
+    const person = new Person({
+      id,
+      vehicles: vehicles.split(","),
+      kmTraveled,
+      from,
+      to,
+    });
+
+    return person;
+  }
 }
 
 export default Person;
