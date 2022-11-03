@@ -1,8 +1,8 @@
-import chalk from "chalk";
-import chalkTable from "chalk-table";
-import DraftLog from "draftlog";
-import readLine from "readline";
-import Person from "./person.js";
+import chalk from 'chalk';
+import chalkTable from 'chalk-table';
+import DraftLog from 'draftlog';
+import readLine from 'readline';
+import Person from './person.js';
 
 class TerminalController {
   constructor() {
@@ -16,6 +16,7 @@ class TerminalController {
     const table = chalkTable(this.getTableOptions(), data);
 
     this.print = console.draft(table);
+
     this.data = data;
   }
 
@@ -30,7 +31,7 @@ class TerminalController {
     this.initializeTable(database, language);
   }
 
-  question(msg = "") {
+  question(msg = '') {
     return new Promise((resolve) => this.terminal.question(msg, resolve));
   }
 
@@ -48,11 +49,11 @@ class TerminalController {
     return {
       leftPad: 2,
       columns: [
-        { field: "id", name: chalk.cyan("ID") },
-        { field: "vehicles", name: chalk.magenta("Vehicles") },
-        { field: "kmTraveled", name: chalk.bgBlue("Km traveled") },
-        { field: "from", name: chalk.red("From") },
-        { field: "to", name: chalk.green("To") },
+        { field: 'id', name: chalk.cyan('ID') },
+        { field: 'vehicles', name: chalk.magenta('Vehicles') },
+        { field: 'kmTraveled', name: chalk.bgBlue('Km traveled') },
+        { field: 'from', name: chalk.red('From') },
+        { field: 'to', name: chalk.green('To') },
       ],
     };
   }

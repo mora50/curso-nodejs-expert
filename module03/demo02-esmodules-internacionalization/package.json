@@ -5,8 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon --ignore database.json --exec node --experimental-json-modules src/index.js"
+    "test": "npx mocha -w --parallel tests/*.test.js",
+    "test:cov": "npx nyc npx mocha -r reify --parallel tests/*.test.js",
+    "dev": "npx nodemon --ignore database.json --exec node  src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "mocha": "^8.4.0",
     "nodemon": "^2.0.20",
     "nyc": "^15.1.0",
+    "reify": "^0.20.12",
     "sinon": "^9.2.4"
   }
 }
