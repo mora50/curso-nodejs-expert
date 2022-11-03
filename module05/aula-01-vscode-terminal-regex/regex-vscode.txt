@@ -1,0 +1,26 @@
+^\d{3}.\d{3}.\d{3}-\d{2}$
+
+\d = digitos de 0 a 9
+
+123.123.123-14
+333.999.123-14
+444.555.123-14
+
+
+replace [.-] - vazio
+
+
+
+regex: ^(\w+),\s(\w+)$
+replace: {firstName: "$2", lastName: "$1"}
+
+Cesar, Augusto
+Gomes, Laila
+Jhon, Jose
+
+
+Busca valores dentro de [] e ()
+
+\[.*?]\(([http|https].*?)\)
+
+[Twitter](https://twitter.com.br) me encotre no github [Github](http://github.com/mora50)
