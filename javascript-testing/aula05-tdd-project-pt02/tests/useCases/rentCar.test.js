@@ -1,113 +1,92 @@
-const { join } = require("path");
-const RentCar = require("../../src/usecases/rentCar");
-const { describe, it, before } = require("mocha");
-const { expect } = require("chai");
-const Tax = require("../../src/entities/tax");
-const sinon = require("sinon");
-const carCategoriesDatabase = join(
-  __dirname,
-  "../",
-  "../",
-  "database",
-  "carCategories.json"
-);
+const { describe, it, before } = require('mocha')
+const { expect } = require('chai')
+const Tax = require('../../src/entities/tax')
+const sinon = require('sinon')
 
-const customersDatabase = join(
-  __dirname,
-  "../",
-  "../",
-  "database",
-  "customers.json"
-);
+const RentCarBuilder = require('../mocks/builders/RentCarBuilder')
 
-const mocks = {
-  validCarCategory: require("./../mocks/valid-carCategory.json"),
-
-  validCar: require("./../mocks/valid-car.json"),
-
-  validCustomer: require("./../mocks/valid-customers.json"),
-};
-
-describe("Use case - Rent a car", () => {
-  let sut = {};
-  let sandbox = {};
+describe('Use case - Rent a car', () => {
+  let sut = {}
+  let sandbox = {}
+  let rentCarBuilder = RentCarBuilder.aRentCar()
 
   before(() => {
-    sut = new RentCar(carCategoriesDatabase, customersDatabase);
-  });
+    sut = RentCarBuilder.aRentCar().build()
+  })
 
   beforeEach(() => {
-    sandbox = sinon.createSandbox();
-  });
+    sandbox = sinon.createSandbox()
+  })
 
   afterEach(() => {
-    sandbox.restore();
-  });
+    sandbox.restore()
+  })
 
-  it("Should calculate the fee based on age major than 30", async () => {
-    const customer = mocks.validCustomer;
+  it('Should calculate the fee based on age major than 30', async () => {
+    const customer = rentCarBuilder.validCustomer
 
-    const carCategory = mocks.validCarCategory;
+    const carCategory = rentCarBuilder.validCarCategory
+
     sandbox
       .stub(sut.carCategoriesRepository, sut.carCategoriesRepository.find.name)
-      .resolves(carCategory);
+      .resolves(carCategory)
 
     sandbox
       .stub(sut.customersRepository, sut.customersRepository.find.name)
-      .resolves(customer);
+      .resolves(customer)
 
-    const result = await sut.execute(5, customer.id, carCategory.id);
+    const result = await sut.execute(5, customer.id, carCategory.id)
 
-    const tax = new Tax();
+    const tax = new Tax()
 
-    const expected = tax.formatTheTax(244.4);
+    const expected = tax.formatTheTax(244.4)
 
-    expect(result).to.be.deep.equal(expected);
-  });
+    expect(result).to.be.deep.equal(expected)
+  })
 
-  it("Should calculate the fee based on age between 18 and 25 ", async () => {
-    const customer = Object.create(mocks.validCustomer);
+  it('Should calculate the fee based on age between 18 and 25 ', async () => {
+    const customer =
+      rentCarBuilder.customerWithAgeBetween18and25().validCustomer
 
-    customer.age = 24;
+    const carCategory = rentCarBuilder.validCarCategory
 
-    const carCategory = mocks.validCarCategory;
     sandbox
       .stub(sut.carCategoriesRepository, sut.carCategoriesRepository.find.name)
-      .resolves(carCategory);
+      .resolves(carCategory)
 
     sandbox
       .stub(sut.customersRepository, sut.customersRepository.find.name)
-      .resolves(customer);
+      .resolves(customer)
 
-    const result = await sut.execute(5, customer.id, carCategory.id);
+    const result = await sut.execute(5, customer.id, carCategory.id)
 
-    const tax = new Tax();
+    const tax = new Tax()
 
-    const expected = tax.formatTheTax(206.8);
+    const expected = tax.formatTheTax(206.8)
 
-    expect(result).to.be.deep.equal(expected);
-  });
+    expect(result).to.be.deep.equal(expected)
+  })
 
-  it("Should calculate the fee based on age between 26 and 30 ", async () => {
-    const customer = Object.create(mocks.validCustomer);
+  it('Should calculate the fee based on age between 26 and 30 ', async () => {
+    const customer =
+      rentCarBuilder.customerWithAgeBetween26and30().validCustomer
 
-    customer.age = 28;
+    const carCategory = rentCarBuilder.validCarCategory
 
-    const carCategory = mocks.validCarCategory;
     sandbox
       .stub(sut.carCategoriesRepository, sut.carCategoriesRepository.find.name)
-      .resolves(carCategory);
+      .resolves(carCategory)
 
     sandbox
       .stub(sut.customersRepository, sut.customersRepository.find.name)
-      .resolves(customer);
+      .resolves(customer)
 
-    const result = await sut.execute(5, customer.id, carCategory.id);
+    const result = await sut.execute(5, customer.id, carCategory.id)
 
-    const tax = new Tax();
+    const tax = new Tax()
 
-    const expected = tax.formatTheTax(282);
+    const expected = tax.formatTheTax(282)
 
-    expect(result).to.be.deep.equal(expected);
-  });
-});
+    expect(result).to.be.deep.equal(expected)
+  })
+})
