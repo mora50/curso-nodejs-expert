@@ -1,0 +1,22 @@
+{
+  "name": "strategy-pattern",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "knex": "^2.3.0",
+    "mongoose": "^6.8.1",
+    "pg": "^8.8.0"
+  }
+}
