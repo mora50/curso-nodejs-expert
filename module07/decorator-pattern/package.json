@@ -1,0 +1,19 @@
+{
+  "name": "decorator-pattern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/http-server.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand --watch --config ./jest.config.mjs",
+    "test:cov": "NODE_OPTIONS=--experimental-vm-modules npx jest --config ./jest.config.mjs --coverage"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
