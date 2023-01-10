@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <results>
+      <element>
+         <gender>Male</gender>
+         <id>10</id>
+         <location>
+            <name>Worldender's lair</name>
+            <url>https://rickandmortyapi.com/api/location/4</url>
+         </location>
+         <name>Alan Rails</name>
+         <origin>
+            <name>unknown</name>
+            <url />
+         </origin>
+         <species>Human</species>
+         <status>Dead</status>
+         <type>Superhuman (Ghost trains summoner)</type>
+      </element>
+   </results>
+</root>
