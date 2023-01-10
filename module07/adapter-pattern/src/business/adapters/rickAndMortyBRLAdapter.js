@@ -1,4 +1,4 @@
-import RickAndMortyBRL from '../integrations/rickAndMortyBRL'
+import RickAndMortyBRL from '../integrations/rickAndMortyBRL.js'
 
 export default class RickAndMortyBRLAdapter {
   static async getCharacters() {
