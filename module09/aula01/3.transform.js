@@ -5,7 +5,7 @@ import { Readable, Writable, Transform } from 'stream'
 const readable = Readable({
   read() {
     for (let index = 0; index < 1e6; index++) {
-      const person = { id: Date.now() + index, name: `Mae do fabricio e nossa [${index}]` }
+      const person = { id: Date.now() + index, name: `Cesar [${index}]` }
 
       const data = JSON.stringify(person)
 
@@ -34,7 +34,7 @@ const mapHeaders = Transform({
     }
     this.counter += 1
 
-    cb(null, "id,name\n".concat(chunk))
+    cb(null, 'id,name\n'.concat(chunk))
   },
 })
 
