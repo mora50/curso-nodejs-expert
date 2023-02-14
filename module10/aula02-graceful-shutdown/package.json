@@ -1,0 +1,24 @@
+{
+  "name": "@cesaraugusto/curso-nodejs-expert",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mora50/curso-nodejs-expert.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mora50/curso-nodejs-expert/issues"
+  },
+  "homepage": "https://github.com/mora50/curso-nodejs-expert#readme",
+  "dependencies": {
+    "mongodb": "^5.0.1"
+  }
+}
